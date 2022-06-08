@@ -1,0 +1,7 @@
+{
+	"Character definition": {
+		"scope": "uxifier",
+		"prefix": ["character"],
+		"body": ["character: "],
+	},
+}

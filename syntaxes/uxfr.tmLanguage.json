@@ -1,0 +1,92 @@
+{
+    "name": "uxifier",
+    "scopeName": "source.uxifier",
+    "fileTypes": [".uxfr", ".uxf"],
+    "patterns": [
+        {
+            "name": "comment.line.double-slash.uxfr",
+            "begin": "\/\/",
+            "end": "\n"
+        },
+        {
+            "name": "comment.block.documentation.uxfr",
+            "begin": "/[*]",
+            "end": "[*]/",
+            "contentName": "markup.italic.uxfr"
+        },
+        {
+            "name": "string.quoted.single.uxfr",
+            "begin": "'",
+            "end": "'"
+        },
+        {
+            "name": "string.quoted.double.uxfr",
+            "begin": "\"",
+            "end": "\""
+        },
+        {
+            "name": "support.function.uxfr",
+            "match": "[:]"
+        },
+        {
+            "name": "support.variable.character.uxfr",
+            "match": "((?<=charSheet: )[\n\t\r ]*[^\n\t\n:({; ]+)"
+        },
+        {
+            "name": "support.variable.fields.uxfr",
+            "match": "(((?<=CheckField )|(?<=IntField )|(?<=StatField )|(?<=TextField )|(?<=SkillField ))[\n\t\r ]*[^\n\t\n:({; ]+)"
+        },
+        {
+            "name": "support.variable.pages.uxfr",
+            "match": "(((?<=config )|(?<=game )|(?<=page ))[\n\t\r ]*[^\n\t\n:({; ]+)"
+        },
+        {
+            "name": "support.variable.components.uxfr",
+            "match": "(((?<=FieldGroup )|(?<=Button )|(?<=BoxComponent )|(?<=Text )|(?<=Image )|(?<=ListComponent ))[\n\t\r ]*[^\n\t\n:({; ]+)"
+        },
+        {
+            "name": "support.variable.components.uxfr",
+            "match": "(((?<=SimpleDecoration )|(?<=GaugeDecoration ))[\n\t\r ]*[^\n\t\n:({; ]+)"
+        },
+        {
+            "name": "string.quoted.double.components.uxfr",
+            "begin": "\\|",
+            "end": "\\|",
+            "contentName": "support.variable.components.area.uxfr"
+        },
+        {
+            "name": "support.class.uxfr",
+            "match": "(charSheet|FieldGroup|CheckField|IntField|TextField|StatField|SkillField|config|game|page|Field|BoxComponent|Button|Text|Image|ListComponent|area|SimpleDecoration|GaugeDecoration)"
+        },
+        {
+            "name": "constant.language",
+            "match": "(navigation|label|href|type|style|content|titlePos|color|title|source|legendPos|legend|width|height|direction|borderColor|borderSize|boxColor|textColor|shape|align|description|affect|maxLength|minLength|max|min|regex|selection|stat|highColor|lowColor|initial)"
+        },
+        {
+            "name": "entity.name.function.uxfr",
+            "match": "(grid|matchWindow|linear|side_menu|bottom_menu|horizontal|vertical|primary|secondary|smallScreen|mediumScreen|largeScreen|xxsmall|xsmall|small|medium|xxlarge|xlarge|large|auto|rectangular|circular|left|right|top|center|input|output)"
+        },
+        {
+            "name": "entity.name.tag.uxfr",
+            "match": "(bool|number|string)"
+        },
+        {
+            "name": "constant.numeric.color.uxfr",
+            "match": "((#[0-9a-f][0-9a-f][0-9a-f]([0-9a-f][0-9a-f][0-9a-f])?)|([0-9]px)|([0-9]%))"
+        },
+        {
+            "name": "constant.numeric.sizes.uxfr",
+            "match": "[0-9]+(px|%)"
+        },
+        {
+            "name": "constant.numeric.uxfr",
+            "match": "[0-9]+"
+        },
+        {
+            "name": "support.variable.fields.call.uxfr",
+            "begin": "(?<=stat)[^\n\t\r]*=",
+            "end": ";",
+            "contentName": "support.variable.field.call.uxfr"
+        }
+    ]
+}

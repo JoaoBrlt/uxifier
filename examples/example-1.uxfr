@@ -1,0 +1,234 @@
+charSheet: ClassicSheet;
+
+TextField nom;
+IntField age;
+TextField race{
+    selection = ['humain', 'nain', 'elf', 'lezard'];
+}
+TextField taille;
+TextField eyes;
+IntField life {
+    initial = 100;
+    max = 100;
+    min = 0;
+}
+
+StatField FOR {
+    min = 0;
+}
+StatField SAG {
+    min = 0;
+}
+StatField INT {
+    min = 0;
+}
+StatField END {
+    min = 0;
+}
+StatField ADR {
+    min = 0;
+}
+StatField CHA {
+    min = 0;
+}
+
+SkillField lecture {
+    stat = INT;
+    affect = 20%;
+}
+SkillField archerie {
+    stat = ADR;
+    affect = 100%;
+}
+SkillField charisme {
+    stat = CHA;
+    affect = 30%;
+}
+SkillField paysan {
+    stat = END;
+    affect = 50%;
+}
+
+config Config {
+    navigation = side_menu;
+    vertical page Perso {
+        FieldGroup perso_group{
+            title = "Ton perso";
+            titlePos = left;
+            style {
+                borderColor = #ffafaf;
+                boxColor = #ffcfcf;
+            }
+            input SimpleDecoration nom;
+            input SimpleDecoration age;
+            input SimpleDecoration race;
+        }
+
+        FieldGroup aspect_group{
+            title = "Ton apparence";
+            titlePos = left;
+            style {
+                direction = horizontal;
+                borderColor = #ffafaf;
+                boxColor = #ffcfcf;
+            }
+            input SimpleDecoration taille;
+            input SimpleDecoration eyes;
+        }
+    }
+
+    vertical page Caracteristique {
+        FieldGroup stats{
+            title = "Tes Stats";
+            style {
+                direction = horizontal;
+                borderColor = #afafff;
+                boxColor = #cfcfff;
+            }
+            input SimpleDecoration FOR {}
+            input SimpleDecoration SAG {}
+            input SimpleDecoration INT {}
+            input SimpleDecoration END {}
+            input SimpleDecoration ADR {}
+            input SimpleDecoration CHA {}
+        }
+
+        FieldGroup skills{
+            title = "Tes Skills";
+            style {
+                borderColor = #afafff;
+                boxColor = #cfcfff;
+            }
+            input SimpleDecoration lecture;
+            input SimpleDecoration archerie;
+            input SimpleDecoration charisme;
+            input SimpleDecoration paysan;
+        }
+    }
+}
+
+game MyGame {
+    page Game {
+        matchWindow area {
+            |header header skills|
+            |inv life skills|
+            |inv stats stats|
+        }
+
+        smallScreen area {
+            |header header|
+            |skills life|
+            |skills stats|
+            |inv stats|
+        }
+
+        FieldGroup stats{
+            title = "Tes Stats";
+            style {
+                direction = horizontal;
+                borderColor = #ff5555;
+                borderSize = xsmall;
+            }
+            output SimpleDecoration FOR {
+                style {
+                    borderColor = #ff0000;
+                    width = xsmall;
+                    align = center;
+                }
+            }
+            output SimpleDecoration SAG {
+                style {
+                    borderColor = #00ff00;
+                    width = xsmall;
+                    align = center;
+                }
+            }
+            output SimpleDecoration INT {
+                style {
+                    borderColor = #0000ff;
+                    width = xsmall;
+                    align = center;
+                }
+            }
+            output SimpleDecoration ADR {
+                style {
+                    borderColor = #ff00ff;
+                    width = xsmall;
+                    align = center;
+                }
+            }
+            output SimpleDecoration END {
+                style {
+                    borderColor = #ffff00;
+                    width = xsmall;
+                    align = center;
+                }
+            }
+            output SimpleDecoration CHA {
+                style {
+                    borderColor = #00ffff;
+                    width = xsmall;
+                    align = center;
+                }
+            }
+        }
+
+        FieldGroup header{
+            style {
+                direction = horizontal;
+                borderColor = #000000;
+                borderSize = xsmall;
+            }
+            output SimpleDecoration nom {
+                style {
+                    width = large;
+                }
+            }
+            output SimpleDecoration age {
+                style {
+                    width = small;
+                }
+            }
+            output SimpleDecoration race {
+                style {
+                    width = medium;
+                }
+            }
+        }
+
+        FieldGroup skills{
+            title = "Skills";
+            style {
+                borderColor = #555555;
+                borderSize = xsmall;
+            }
+            output SimpleDecoration lecture;
+            output SimpleDecoration archerie;
+            output SimpleDecoration paysan;
+            output SimpleDecoration charisme;
+        }
+
+        ListComponent inv {
+            style {
+                borderColor = #5555ff;
+                borderSize = xsmall;
+            }
+            title = "Inventaire";
+        }
+
+        FieldGroup life {
+            style {
+                align = center;
+                borderColor = #55ff55;
+                borderSize = xsmall;
+            }
+
+            input GaugeDecoration life {
+                style {
+                    shape = circular;
+                    borderColor = #cccccc;
+                }
+            }
+        }
+    }
+}

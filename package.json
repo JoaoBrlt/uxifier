@@ -1,0 +1,102 @@
+{
+    "name": "uxifier",
+    "displayName": "uxifier",
+    "description": "Please enter a brief description here",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.56.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "uxifier",
+                "aliases": [
+                    "UXifier",
+                    "uxifier"
+                ],
+                "extensions": [
+                    ".uxfr",
+                    ".uxf"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "uxifier",
+                "scopeName": "source.uxifier",
+                "path": "./syntaxes/uxfr.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "uxifier",
+                "path": "./snippets/uxifier.body.code-snippets"
+            },
+            {
+                "language": "uxifier",
+                "path": "./snippets/uxifier.components.code-snippets"
+            },
+            {
+                "language": "uxifier",
+                "path": "./snippets/uxifier.deco-style.code-snippets"
+            },
+            {
+                "language": "uxifier",
+                "path": "./snippets/uxifier.fields.code-snippets"
+            },
+            {
+                "language": "uxifier",
+                "path": "./snippets/uxifier.pages.code-snippets"
+            }
+        ]
+    },
+    "activationEvents": [
+        "onLanguage:uxifier"
+    ],
+    "files": [
+        "bin",
+        "out",
+        "src"
+    ],
+    "bin": {
+        "uxifier": "./bin/cli"
+    },
+    "main": "./out/extension.js",
+    "scripts": {
+        "setup": "npm run clean && npm run langium:generate && npm run build && npm run watch",
+        "vscode:prepublish": "npm run build && npm run lint",
+        "clean": "rimraf out",
+        "copy:resources": "copyfiles resources/* resources/public/* out",
+        "prebuild": "npm run copy:resources",
+        "build": "tsc -b tsconfig.json",
+        "prewatch": "npm run copy:resources",
+        "watch": "tsc -b tsconfig.json --watch",
+        "lint": "eslint src --ext ts",
+        "langium:generate": "langium generate",
+        "langium:watch": "langium generate --watch"
+    },
+    "dependencies": {
+        "colors": "^1.4.0",
+        "commander": "^8.0.0",
+        "fs-extra": "^10.0.0",
+        "langium": "^0.2.0",
+        "vscode-languageclient": "^7.0.0",
+        "vscode-languageserver": "^7.0.0"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "^9.0.13",
+        "@types/node": "^14.17.3",
+        "@types/vscode": "^1.64.0",
+        "@typescript-eslint/eslint-plugin": "^4.14.1",
+        "@typescript-eslint/parser": "^4.14.1",
+        "copyfiles": "^2.4.1",
+        "eslint": "^7.19.0",
+        "langium-cli": "^0.2.0",
+        "rimraf": "^3.0.2",
+        "typescript": "^4.1.3"
+    }
+}
